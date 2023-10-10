@@ -1,0 +1,51 @@
+package com.jpa_template.project;
+
+//public class DuplicateEmployeeException extends RuntimeException {
+
+public class DuplicateEmployeeException extends RuntimeException {
+
+	
+	public DuplicateEmployeeException(String message) {
+		super(message);
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//private ObjectDTO employeDTO;
+
+//public DuplicateEmployeeException(ObjectDTO employeDTO) {
+//	
+//	super(employeDTO.getMessage());
+////	this.employeDTO = employeDTO;
+//	//System.out.println(message);
+////}
+////public EmployeDTO getCustomDTO() {
+////    return employeDTO;
+//} 

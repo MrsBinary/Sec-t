@@ -1,0 +1,63 @@
+package com.jpa_template.project;
+
+
+
+public class ObjectDTO {
+	Object data;
+	private boolean success = false;
+	private String message = "Employee with the same first name and last name already exists.";
+	public ObjectDTO() {
+	
+	}
+	public ObjectDTO(boolean success, String message, Object e) {
+		super();
+		this.success = success;
+		this.message = message;
+		this.data = e;
+	}
+	/**
+	 * @return the success
+	 */
+	public boolean isSuccess() {
+		return success;
+	}
+	/**
+	 * @param success the success to set
+	 */
+	public void setSuccess(boolean success) {
+		this.success = success;
+	}
+	/**
+	 * @return the message
+	 */
+	public String getMessage() {
+		return message;
+	}
+	/**
+	 * @param message the message to set
+	 */
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	/**
+	 * @return the id
+	 */
+	/**
+	 * @return the data
+	 */
+	public Object getData() {
+		return data;
+	}
+	/**
+	 * @param data the data to set
+	 */
+	public void setData(Employe data) {
+		this.data = data;
+	}
+	
+	
+	
+	
+	
+	
+}

@@ -1,0 +1,11 @@
+package com.jpa_template.project;
+
+import org.springframework.data.jpa.repository.Query;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface Repository extends JpaRepository<Employe, Long>  {
+
+	@Query("SELECT CASE WHEN COUNT(e) > 0 THEN true ELSE false END FROM Employe e WHERE e.first_name = :firstName AND e.last_name = :lastName")
+    boolean existsByFirstNameAndLastName(String firstName, String lastName);
+}

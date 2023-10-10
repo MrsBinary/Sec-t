@@ -1,0 +1,55 @@
+package com.jpa_template.project;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+
+@Component
+public class EmployeePopulationAtApplicationStartup implements CommandLineRunner {
+	int id = 1;
+//	@Autowired
+//	private jpa_repository repository;
+	
+	@Autowired
+	private Repository repository;
+
+
+	@Override
+	public void run(String... args) throws Exception {
+		
+		
+		
+		// JPA Repository
+		
+//		repository.insert(new Employe(2, 1, "Entry1", "Through_JPA"));
+//		repository.insert(new Employe(3, 2, "Entry2", "Through_JPA"));
+//		repository.insert(new Employe(4, 2, "Entry3", "Through_JPA"));
+//		repository.insert(new Employe(5, 1, "Entry4", "Through_JPA"));
+//		repository.updateById(2, new Employe(2, 1, "UpdatedEntry-Entry1", "Through_JPA"));
+	
+		
+		// Spring data JPA Repository..
+		
+		repository.save(new Employe(id++, 1, "First", "Field"));
+		repository.save(new Employe(id++, 2, "Second", "Field"));
+		repository.save(new Employe(id++, 2, "Third", "Field"));
+		repository.save(new Employe(id++, 1, "Fourth", "Field"));
+//		repository.save(new Employe());
+		
+		System.out.println(id);
+		
+		
+		//repository.updateById(2, new Employe(2, 1, "UpdatedEntry-Entry1", "Through_JPA"));
+		
+//		
+//		System.out.println(repository.findById(2l));
+//		System.out.println(repository.findById(3l));
+//		System.out.println(repository.findAll());
+//		System.out.println(repository.findByDept_id(2));
+		//System.out.println(repository.findByName("Entry2"));
+	}
+
+
+
+}

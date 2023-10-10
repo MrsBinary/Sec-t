@@ -1,0 +1,50 @@
+package com.jpa_template.project;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+import com.jpa_template.project.ErrorResponseDTO.ErrorEntry;
+
+@ControllerAdvice
+@Order(Ordered.HIGHEST_PRECEDENCE) // Set a higher precedence
+public class MethodArgumentNotValidExceptionHandler {
+	List<ErrorEntry> errors = new ArrayList<>();
+	 @ExceptionHandler(MethodArgumentNotValidException.class)
+	    public ResponseEntity<Object> handleMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
+		 
+		 ErrorResponseDTO Errobject = new ErrorResponseDTO();
+		 HashMap<String,String> errorsToHashMap = new HashMap<>();
+		
+		 
+		 
+		 StringBuilder getErrorMessage = new StringBuilder();
+		 for(FieldError err : ex.getBindingResult().getFieldErrors()) {
+			 getErrorMessage 
+			 	.append(err.getField()) 
+	            .append(": ")
+	            .append(err.getDefaultMessage()) 
+	            .append("; ");
+//			 Errobject.addError(err.getField(), err.getDefaultMessage());
+			 errorsToHashMap.put(err.getField(), err.getDefaultMessage());
+		 }
+		 Errobject.setSuccess(false);
+		 Errobject.setMessage(getErrorMessage);
+		 Errobject.setErrorsToHashMap(errorsToHashMap);
+		
+		
+		 
+		 return ResponseEntity.status(HttpStatus.CONFLICT).body(Errobject);
+		 
+	    }
+}
+  

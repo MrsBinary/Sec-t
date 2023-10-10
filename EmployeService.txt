@@ -1,0 +1,122 @@
+package com.jpa_template.project;
+
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+
+@Component
+public class EmployeService {
+	
+	
+	private Repository jpaRepository;
+	
+	public EmployeService (Repository repository) {
+		jpaRepository = repository;
+	}
+	
+	
+	// 1. FIND ALL EMPLOYEES.
+	public List<Employe>retriveAllEmployes(){
+		return jpaRepository.findAll();
+	}
+	
+	
+	//2. GET EMPLOYEE BY ID.
+	  public ResponseEntity<Employe> getEmployeById(@PathVariable("id") long id) {
+	    Optional<Employe> empData = jpaRepository.findById(id);
+
+	    if (empData.isPresent()) {
+	      return new ResponseEntity<>(empData.get(), HttpStatus.OK);
+	    } else {
+	      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	    }
+	  }
+	  
+	  
+	// 5. DELETE EMPLOYE
+	public void deleteUser(@PathVariable long id) {
+				jpaRepository.deleteById(id);
+			}
+	
+	//4. ADD EMPLOYEE --> Repository filtering method.
+	
+//	public ResponseEntity<Employe> createEmploye(@RequestBody Employe emp){
+//		try {
+//				Employe e = Jpa_repository.saveAndFlush(emp);
+//				return new ResponseEntity<Employe>(e,HttpStatus.CREATED);
+//		}catch(DataIntegrityViolationException e) {
+//				return new ResponseEntity<Employe>(HttpStatus.INTERNAL_SERVER_ERROR); //500
+//			}
+//		}
+	
+	
+	
+	//4. ADD EMPLOYEE --> Create my own class in repository to filter.
+//	public Employe createEmploye(@RequestBody Employe emp) throws DuplicateEmployeeException {
+//		
+//			if(jpaRepository.existsByFirstNameAndLastName(emp.getFirst_name(), emp.getLast_name())) {
+//				throw new DuplicateEmployeeException("Employee with the same first name and last name already exists.");
+//			}else {
+//				Employe e = jpaRepository.save(emp);
+//				//String message = "Employe Details saved..";
+//				//EmployeDTO dto = new EmployeDTO(false, message, e.getId(), e.getDept_id(), e.getFirst_name(), e.getLast_name());
+//				return e;
+//			}
+//		}
+	
+	// Using DTO Object
+//	public ObjectDTO createEmploye(@RequestBody Employe emp) throws DuplicateEmployeeException {
+//		
+//		if(jpaRepository.existsByFirstNameAndLastName(emp.getFirst_name(), emp.getLast_name())) {
+//			String message = "Employee with the same first name and last name already exists.";
+//			throw new DuplicateEmployeeException("Employee with the same first name and last name already exists.");
+//		}else {
+//			Employe e = jpaRepository.save(emp);
+//			String message = "Employe Details saved..";
+//			ObjectDTO dto = new ObjectDTO(true, message, emp);
+//			return dto;
+//		}
+//	}
+	public ObjectDTO createEmploye(@RequestBody Employe emp) throws DuplicateEmployeeException {
+		
+		if(jpaRepository.existsByFirstNameAndLastName(emp.getFirst_name(), emp.getLast_name())) {
+			String message = "Employee with the same first name and last name already exists.";
+			throw new DuplicateEmployeeException(message);
+		}else {
+			Employe e = jpaRepository.save(emp);
+			String message = "Employe Details saved..";
+			ObjectDTO dto = new ObjectDTO(true, message, emp);
+			return dto;
+		}
+	}
+	
+	
+	
+	//3. UPDATE EMPLOYEE
+	public ResponseEntity<Employe> updateTutorial(@PathVariable("id") long id, @RequestBody Employe e) {
+		Optional<Employe> tutorialData = jpaRepository.findById(id);
+
+		 if (tutorialData.isPresent()) {
+		    Employe _tutorial = tutorialData.get();
+		    _tutorial.setDept_id(e.getDept_id());
+		    _tutorial.setFirst_name(e.getFirst_name());
+		    _tutorial.setLast_name(e.getLast_name());
+		    return new ResponseEntity<>(jpaRepository.save(_tutorial), HttpStatus.OK);
+		 } else {
+		      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		    }
+		  }
+	
+}
