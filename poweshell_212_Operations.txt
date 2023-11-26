@@ -1,0 +1,899 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Try the new cross-platform PowerShell https://aka.ms/pscore6
+
+PS C:\Users\aahuja> ssh securview@10.20.202.212
+The authenticity of host '10.20.202.212 (10.20.202.212)' can't be established.
+ECDSA key fingerprint is SHA256:aK/3n1z9C+eK7mhV/58wW9d0l1WFhCZWcgAz624mVic.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.20.202.212' (ECDSA) to the list of known hosts.
+Password:
+Password:
+Last failed login: Fri Nov 24 12:34:09 IST 2023 from 10.20.208.79 on ssh:notty
+There was 1 failed login attempt since the last successful login.
+Last login: Fri Nov 24 12:31:17 2023 from 10.20.200.229
+truei: command not found
+securview@localhost:~> mongosh --authenticationDatabase --host 127.0.0.1:27017 "admin" -u "admin"
+Enter password: *********
+Current Mongosh Log ID: 65604b5ea328c0bb83689b1d
+Connecting to:          mongodb://<credentials>@127.0.0.1:27017/admin?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.6.1
+MongoServerError: Authentication failed.
+securview@localhost:~> mongosh --authenticationDatabase --host 127.0.0.1:27017 "admin" -u "admin"
+Enter password: *********
+Current Mongosh Log ID: 65604b8dfc2876a3e5020a68
+Connecting to:          mongodb://<credentials>@127.0.0.1:27017/admin?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.6.1
+MongoServerError: Authentication failed.
+securview@localhost:~> mongosh --authenticationDatabase --host 127.0.0.1:27017 "admin" -u "admin"
+Enter password: ********
+Current Mongosh Log ID: 65604b9b8b37390327f184d0
+Connecting to:          mongodb://<credentials>@127.0.0.1:27017/admin?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.6.1
+Using MongoDB:          6.0.3
+Using Mongosh:          1.6.1
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2023-11-23T21:21:49.727+05:30: /sys/kernel/mm/transparent_hugepage/enabled is 'always'. We suggest setting it to 'never'
+   2023-11-23T21:21:49.728+05:30: vm.max_map_count is too low
+------
+
+------
+   Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+   metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+   The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+   and anyone you share the URL with. MongoDB may use this information to make product
+   improvements and to suggest MongoDB products and deployment options to you.
+
+   To enable free monitoring, run the following command: db.enableFreeMonitoring()
+   To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+------
+
+admin> show dbs
+admin                           180.00 KiB
+config                          108.00 KiB
+local                            72.00 KiB
+sv-cust-db                      476.00 KiB
+sv-data-ingestion               103.72 MiB
+sv-doc-details                   48.00 KiB
+sv-email-notification           688.00 KiB
+sv-integration-db                31.93 MiB
+sv-itsm-db                       79.54 MiB
+sv-master-data                    6.53 MiB
+sv-partner-db                   172.00 KiB
+sv-user-details                   2.27 MiB
+sv-user-session-details           7.28 MiB
+sv-user-tenant-mapping-details  324.00 KiB
+admin> use sv-user-details
+switched to db sv-user-details
+sv-user-details> show collections
+bk_11102023_feature_details
+bk_201023_1_feature_details
+bk_251023_feature_details
+feature_details
+group_definition
+role_details
+user_auth
+user_details
+user_details_history
+user_group
+user_mfa
+user_password_history
+user_role
+user_secret_questions_ans
+user_tenant_mapping
+sv-user-details> db.user_details_history.find()
+[
+  {
+    _id: '3187c0d8-a1e2-436d-82a0-e08952ca9417',
+    event: 'USER PASSWORD CHANGED',
+    referenceId: '74c4a66c-6b76-45e3-a251-c11c9217568e',
+    userId: '74c4a66c-6b76-45e3-a251-c11c9217568e',
+    userName: 'Kiran Patil',
+    changeDetails: 'Password has been changed by Kiran Patil',
+    createdById: '74c4a66c-6b76-45e3-a251-c11c9217568e',
+    createdDate: ISODate("2023-09-03T05:39:55.165Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserHistory'
+  },
+  {
+    _id: '832c7381-fd27-4da5-baba-88d9d0bd0cdc',
+    event: 'USER_CREATED',
+    referenceId: '92426541-3906-440b-82b4-9655994e0362',
+    user: {
+      _id: '92426541-3906-440b-82b4-9655994e0362',
+      firstName: 'Integration',
+      lastName: 'User',
+      roleId: '5bc873df-9087-4e10-8a59-6b0828c0c35e',
+      emailId: 'pdhakad@securview.com',
+      loginId: 'integrationuser',
+      phone: '0987654321',
+      userType: '100',
+      timeZoneId: '357',
+      entityType: '0',
+      entityId: '79306fdf-b51b-45b8-ab88-8b75d826df51',
+      primaryContact: false,
+      enabled: true,
+      createdById: '74c4a66c-6b76-45e3-a251-c11c9217568e',
+      createdDate: ISODate("2023-09-03T06:18:53.414Z"),
+      active: true,
+      version: 1
+    },
+    userId: '74c4a66c-6b76-45e3-a251-c11c9217568e',
+    userName: 'Kiran Patil',
+    changeDetails: '[]',
+    createdById: '74c4a66c-6b76-45e3-a251-c11c9217568e',
+    createdDate: ISODate("2023-09-03T06:18:53.675Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserHistory'
+  },
+  {
+    _id: '5d640414-9c8b-4b58-a540-06acdbe5a0a6',
+    event: 'USER_WELCOME',
+    referenceId: '92426541-3906-440b-82b4-9655994e0362',
+    userId: '92426541-3906-440b-82b4-9655994e0362',
+    userName: 'Kiran Patil',
+    changeDetails: 'Welcome email sent by Kiran Patil',
+    createdById: '92426541-3906-440b-82b4-9655994e0362',
+    createdDate: ISODate("2023-09-03T06:03:20.972Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserHistory'
+  },
+  {
+    _id: '2367e001-6c40-4074-9c43-79db899fd6c8',
+    event: 'USER PASSWORD CHANGED',
+    referenceId: '92426541-3906-440b-82b4-9655994e0362',
+    userId: '92426541-3906-440b-82b4-9655994e0362',
+    userName: 'Integration User',
+    changeDetails: 'Password has been changed by Integration User',
+    createdById: '92426541-3906-440b-82b4-9655994e0362',
+    createdDate: ISODate("2023-09-03T06:22:21.941Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserHistory'
+  },
+  {
+    _id: '257e4a36-5df3-4fa8-bb43-9e85e007c5ef',
+    event: 'USER PASSWORD CHANGED',
+    referenceId: '74c4a66c-6b76-45e3-a251-c11c9217568e',
+    userId: '74c4a66c-6b76-45e3-a251-c11c9217568e',
+    userName: 'Kiran Patil',
+    changeDetails: 'Password has been changed by Kiran Patil',
+    createdById: '74c4a66c-6b76-45e3-a251-c11c9217568e',
+    createdDate: ISODate("2023-09-03T06:38:29.738Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserHistory'
+  },
+  {
+    _id: 'ed608354-502a-4e6c-aab6-245941ca27d8',
+    event: 'USER_CREATED',
+    referenceId: 'fed8abd3-7065-4857-a91c-85f9506d16c7',
+    user: {
+      _id: 'fed8abd3-7065-4857-a91c-85f9506d16c7',
+      firstName: 'Ketan',
+      middleName: 'D',
+      lastName: 'Gote',
+      roleId: '5bc873df-9087-4e10-8a59-6b0828c0c35e',
+      emailId: 'kgote@securview.com',
+      loginId: 'ketangote',
+      phone: '8378988445',
+      userType: '100',
+      timeZoneId: '357',
+      entityType: '0',
+      entityId: '79306fdf-b51b-45b8-ab88-8b75d826df51',
+      primaryContact: false,
+      enabled: true,
+      createdById: '92426541-3906-440b-82b4-9655994e0362',
+      createdDate: ISODate("2023-09-03T06:29:04.562Z"),
+      active: true,
+      version: 1
+    },
+    userId: '92426541-3906-440b-82b4-9655994e0362',
+    userName: 'Integration User',
+    changeDetails: '[]',
+    createdById: '92426541-3906-440b-82b4-9655994e0362',
+    createdDate: ISODate("2023-09-03T06:29:04.686Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserHistory'
+  },
+  {
+    _id: '1757927b-421f-4d6d-aa9b-a838492abea2',
+    event: 'USER_WELCOME',
+    referenceId: 'fed8abd3-7065-4857-a91c-85f9506d16c7',
+    userId: 'fed8abd3-7065-4857-a91c-85f9506d16c7',
+    userName: 'Integration User',
+    changeDetails: 'Welcome email sent by Integration User',
+    createdById: 'fed8abd3-7065-4857-a91c-85f9506d16c7',
+    createdDate: ISODate("2023-09-03T06:29:14.483Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserHistory'
+  },
+  {
+    _id: 'd3340b35-6c25-4b90-a073-fe60e7cc8cff',
+    event: 'USER PASSWORD CHANGED',
+    referenceId: 'fed8abd3-7065-4857-a91c-85f9506d16c7',
+    userId: 'fed8abd3-7065-4857-a91c-85f9506d16c7',
+    userName: 'Ketan Gote',
+    changeDetails: 'Password has been changed by Ketan Gote',
+    createdById: 'fed8abd3-7065-4857-a91c-85f9506d16c7',
+    createdDate: ISODate("2023-09-03T06:31:14.128Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserHistory'
+  },
+  {
+    _id: 'b850eb3b-b0ea-4e6e-99d0-646863f56b02',
+    event: 'USER_CREATED',
+    referenceId: 'ded396d2-2a2a-433d-ba5f-389c98e30e4c',
+    user: {
+      _id: 'ded396d2-2a2a-433d-ba5f-389c98e30e4c',
+      firstName: 'Devlopment',
+      lastName: 'Support',
+      roleId: '5bc873df-9087-4e10-8a59-6b0828c0c35e',
+      emailId: 'pdhakad@securview.com',
+      loginId: 'devsupport',
+      phone: '0987654321',
+      userType: '100',
+      timeZoneId: '357',
+      entityType: '0',
+      entityId: '79306fdf-b51b-45b8-ab88-8b75d826df51',
+      primaryContact: false,
+      enabled: true,
+      createdById: 'fed8abd3-7065-4857-a91c-85f9506d16c7',
+      createdDate: ISODate("2023-09-03T06:48:48.182Z"),
+      active: true,
+      version: 1
+    },
+    userId: 'fed8abd3-7065-4857-a91c-85f9506d16c7',
+    userName: 'Ketan Gote',
+    changeDetails: '[]',
+    createdById: 'fed8abd3-7065-4857-a91c-85f9506d16c7',
+    createdDate: ISODate("2023-09-03T06:48:48.355Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserHistory'
+  },
+  {
+    _id: '887dee96-09b9-4fdd-b9f7-52d7d6fd32fd',
+    event: 'USER_WELCOME',
+    referenceId: 'ded396d2-2a2a-433d-ba5f-389c98e30e4c',
+    userId: 'ded396d2-2a2a-433d-ba5f-389c98e30e4c',
+    userName: 'Ketan Gote',
+    changeDetails: 'Welcome email sent by Ketan Gote',
+    createdById: 'ded396d2-2a2a-433d-ba5f-389c98e30e4c',
+    createdDate: ISODate("2023-09-03T06:33:08.725Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserHistory'
+  },
+  {
+    _id: 'c8185843-1671-4dc5-bedd-284531af42dd',
+    event: 'USER_WELCOME',
+    referenceId: '74c4a66c-6b76-45e3-a251-c11c9217568e',
+    userId: '74c4a66c-6b76-45e3-a251-c11c9217568e',
+    userName: 'Kiran Patil',
+    changeDetails: 'Welcome email sent by Kiran Patil',
+    createdById: '74c4a66c-6b76-45e3-a251-c11c9217568e',
+    createdDate: ISODate("2023-09-03T07:15:56.713Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserHistory'
+  },
+  {
+    _id: 'd55ada82-5adb-4556-80d8-c33679e4dd69',
+    event: 'USER PASSWORD CHANGED',
+    referenceId: '74c4a66c-6b76-45e3-a251-c11c9217568e',
+    userId: '74c4a66c-6b76-45e3-a251-c11c9217568e',
+    userName: 'Kiran Patil',
+    changeDetails: 'Password has been changed by Kiran Patil',
+    createdById: '74c4a66c-6b76-45e3-a251-c11c9217568e',
+    createdDate: ISODate("2023-09-03T07:03:11.387Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserHistory'
+  },
+  {
+    _id: 'b6111bc1-8e1d-48c5-8e43-0808890a52e2',
+    event: 'USER_UPDATED',
+    referenceId: '2846590a-1db2-4936-aa35-d787f1720f4c',
+    user: {
+      _id: '2846590a-1db2-4936-aa35-d787f1720f4c',
+      firstName: 'SecurView',
+      middleName: '',
+      lastName: 'SOC',
+      roleId: 'e3666040-401e-4b92-955a-5869e33d65e6',
+      emailId: 'securviewmonitoring@gmail.com',
+      loginId: 'securviewmonitoring',
+      phone: '7323937776',
+      userType: '201',
+      timeZoneId: '104',
+      entityType: '2',
+      entityId: 'ff29e8f4-62af-4f09-bdbb-e5903d6943ba',
+      primaryContact: true,
+      enabled: true,
+      createdById: 'd5c0a0c2-3ac0-4f42-bf4d-e554281a738a',
+      createdDate: ISODate("2023-09-03T00:00:00.804Z"),
+      updatedById: '74c4a66c-6b76-45e3-a251-c11c9217568e',
+      updatedDate: ISODate("2023-09-03T07:19:49.939Z"),
+      active: true,
+      version: 2
+    },
+    userId: '74c4a66c-6b76-45e3-a251-c11c9217568e',
+    userName: 'Kiran Patil',
+    changeDetails: '[]',
+    createdById: '74c4a66c-6b76-45e3-a251-c11c9217568e',
+    createdDate: ISODate("2023-09-03T07:19:49.978Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserHistory'
+  },
+  {
+    _id: 'b624647c-af04-4829-94ce-959c3865a2ef',
+    event: 'USER PASSWORD CHANGED',
+    referenceId: '2846590a-1db2-4936-aa35-d787f1720f4c',
+    userId: '2846590a-1db2-4936-aa35-d787f1720f4c',
+    userName: 'SecurView SOC',
+    changeDetails: 'Password has been changed by SecurView SOC',
+    createdById: '2846590a-1db2-4936-aa35-d787f1720f4c',
+    createdDate: ISODate("2023-09-03T07:21:17.002Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserHistory'
+  },
+  {
+    _id: '0e96f182-fb2d-422d-9d66-c49e371de2ec',
+    event: 'USER PASSWORD CHANGED',
+    referenceId: '02df746a-e853-4dfd-a553-bc4493d8ace2',
+    userId: '02df746a-e853-4dfd-a553-bc4493d8ace2',
+    userName: 'Paresh Warekar',
+    changeDetails: 'Password has been changed by Paresh Warekar',
+    createdById: '02df746a-e853-4dfd-a553-bc4493d8ace2',
+    createdDate: ISODate("2023-09-03T07:52:20.347Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserHistory'
+  },
+  {
+    _id: '167ccc1a-75ac-4727-9339-621eec1400b2',
+    event: 'USER_WELCOME',
+    referenceId: '4c8ffbf9-5d62-4f27-9dca-2702010cbb71',
+    userId: '4c8ffbf9-5d62-4f27-9dca-2702010cbb71',
+    userName: 'Paresh Warekar',
+    changeDetails: 'Welcome email sent by Paresh Warekar',
+    createdById: '4c8ffbf9-5d62-4f27-9dca-2702010cbb71',
+    createdDate: ISODate("2023-09-03T07:54:42.620Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserHistory'
+  },
+  {
+    _id: '16df3215-d9f4-4dfc-8669-63489457191e',
+    event: 'USER PASSWORD CHANGED',
+    referenceId: '4c8ffbf9-5d62-4f27-9dca-2702010cbb71',
+    userId: '4c8ffbf9-5d62-4f27-9dca-2702010cbb71',
+    userName: 'Naresh Sonawane',
+    changeDetails: 'Password has been changed by Naresh Sonawane',
+    createdById: '4c8ffbf9-5d62-4f27-9dca-2702010cbb71',
+    createdDate: ISODate("2023-09-03T07:57:32.874Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserHistory'
+  },
+  {
+    _id: 'abdd9f51-e170-4981-8910-52f956d0f92f',
+    event: 'USER PASSWORD CHANGED',
+    referenceId: 'c99f5955-6e39-465f-9b85-ab8d75e5eb84',
+    userId: 'c99f5955-6e39-465f-9b85-ab8d75e5eb84',
+    userName: 'Swapnil Rupnawar',
+    changeDetails: 'Password has been changed by Swapnil Rupnawar',
+    createdById: 'c99f5955-6e39-465f-9b85-ab8d75e5eb84',
+    createdDate: ISODate("2023-09-03T07:43:34.019Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserHistory'
+  },
+  {
+    _id: '67f90995-f6f6-44e0-8fbe-7e1cb74ca7bc',
+    event: 'USER_UPDATED',
+    referenceId: '74c4a66c-6b76-45e3-a251-c11c9217568e',
+    user: {
+      _id: '74c4a66c-6b76-45e3-a251-c11c9217568e',
+      firstName: 'Kiran',
+      middleName: '',
+      lastName: 'Patil',
+      roleId: '5bc873df-9087-4e10-8a59-6b0828c0c35e',
+      emailId: 'kpatil@securview.com',
+      loginId: 'kpatil',
+      phone: '91 9049002184',
+      userType: '100',
+      timeZoneId: '104',
+      entityType: '0',
+      entityId: '79306fdf-b51b-45b8-ab88-8b75d826df51',
+      primaryContact: false,
+      enabled: true,
+      createdById: 'd5c0a0c2-3ac0-4f42-bf4d-e554281a738a',
+      createdDate: ISODate("2023-09-03T00:00:00.804Z"),
+      updatedById: '74c4a66c-6b76-45e3-a251-c11c9217568e',
+      updatedDate: ISODate("2023-09-03T07:47:09.597Z"),
+      active: true,
+      version: 2
+    },
+    userId: '74c4a66c-6b76-45e3-a251-c11c9217568e',
+    userName: 'Kiran Patil',
+    changeDetails: '[]',
+    createdById: '74c4a66c-6b76-45e3-a251-c11c9217568e',
+    createdDate: ISODate("2023-09-03T07:47:09.618Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserHistory'
+  },
+  {
+    _id: '9b81b0fc-9a82-4585-89be-89ede9579851',
+    event: 'USER PASSWORD CHANGED',
+    referenceId: 'f50ebbdf-1448-4d2c-bdc2-e3eca20ad9ff',
+    userId: 'f50ebbdf-1448-4d2c-bdc2-e3eca20ad9ff',
+    userName: 'Shubham Patil',
+    changeDetails: 'Password has been changed by Shubham Patil',
+    createdById: 'f50ebbdf-1448-4d2c-bdc2-e3eca20ad9ff',
+    createdDate: ISODate("2023-09-03T08:28:30.129Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserHistory'
+  }
+]
+Type "it" for more
+sv-user-details> db.user_details_history.find({"loginId" : "demouser"})
+
+sv-user-details>  db.user_details.find({"loginId" : "demouser"})
+[
+  {
+    _id: 'afe52690-7a26-4b95-9a3c-ef9467041b53',
+    firstName: 'demo',
+    lastName: 'user',
+    roleId: '126909c8-2136-410f-a8ba-25f93f857a22',
+    emailId: 'aahuja@securview.com',
+    loginId: 'demouser',
+    phone: '0',
+    userType: '100',
+    timeZoneId: '357',
+    entityType: '0',
+    entityId: '79306fdf-b51b-45b8-ab88-8b75d826df51',
+    primaryContact: false,
+    enabled: true,
+    createdById: '16e1935f-d8ff-4fa0-ba38-608424d8d7f8',
+    createdDate: ISODate("2023-11-24T06:50:16.950Z"),
+    updatedById: '16e1935f-d8ff-4fa0-ba38-608424d8d7f8',
+    updatedDate: ISODate("2023-11-24T06:57:19.534Z"),
+    active: true,
+    version: 2,
+    _class: 'com.sv.user.entity.User'
+  }
+]
+sv-user-details> show collections
+bk_11102023_feature_details
+bk_201023_1_feature_details
+bk_251023_feature_details
+feature_details
+group_definition
+role_details
+user_auth
+user_details
+user_details_history
+user_group
+user_mfa
+user_password_history
+user_role
+user_secret_questions_ans
+user_tenant_mapping
+sv-user-details>  db.user_details.find({"loginId" : "demouser"})
+[
+  {
+    _id: 'afe52690-7a26-4b95-9a3c-ef9467041b53',
+    firstName: 'demo',
+    lastName: 'user',
+    roleId: '126909c8-2136-410f-a8ba-25f93f857a22',
+    emailId: 'aahuja@securview.com',
+    loginId: 'demouser',
+    phone: '0',
+    userType: '100',
+    timeZoneId: '357',
+    entityType: '0',
+    entityId: '79306fdf-b51b-45b8-ab88-8b75d826df51',
+    primaryContact: false,
+    enabled: true,
+    createdById: '16e1935f-d8ff-4fa0-ba38-608424d8d7f8',
+    createdDate: ISODate("2023-11-24T06:50:16.950Z"),
+    updatedById: '16e1935f-d8ff-4fa0-ba38-608424d8d7f8',
+    updatedDate: ISODate("2023-11-24T06:57:19.534Z"),
+    active: true,
+    version: 2,
+    _class: 'com.sv.user.entity.User'
+  }
+]
+sv-user-details> db.user_details_history.find({"userId" : "afe52690-7a26-4b95-9a3c-ef9467041b53"})
+[
+  {
+    _id: 'ea555005-67f3-47ae-bc17-28877182c9b5',
+    event: 'USER_WELCOME',
+    referenceId: 'afe52690-7a26-4b95-9a3c-ef9467041b53',
+    userId: 'afe52690-7a26-4b95-9a3c-ef9467041b53',
+    userName: 'Mayur Mangoli',
+    changeDetails: 'Welcome email sent by Mayur Mangoli',
+    createdById: 'afe52690-7a26-4b95-9a3c-ef9467041b53',
+    createdDate: ISODate("2023-11-24T06:52:21.968Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserHistory'
+  },
+  {
+    _id: '6afac836-066c-43b1-bbec-b1692f69d1f9',
+    event: 'USER PASSWORD CHANGED',
+    referenceId: 'afe52690-7a26-4b95-9a3c-ef9467041b53',
+    userId: 'afe52690-7a26-4b95-9a3c-ef9467041b53',
+    userName: 'demo user',
+    changeDetails: 'Password has been changed by demo user',
+    createdById: 'afe52690-7a26-4b95-9a3c-ef9467041b53',
+    createdDate: ISODate("2023-11-24T07:00:59.420Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserHistory'
+  },
+  {
+    _id: '78d7488e-a5c6-407d-b1f9-57ab0215e081',
+    event: 'USER PASSWORD CHANGED',
+    referenceId: 'afe52690-7a26-4b95-9a3c-ef9467041b53',
+    userId: 'afe52690-7a26-4b95-9a3c-ef9467041b53',
+    userName: 'demo user',
+    changeDetails: 'Password has been changed by demo user',
+    createdById: 'afe52690-7a26-4b95-9a3c-ef9467041b53',
+    createdDate: ISODate("2023-11-24T07:17:12.199Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserHistory'
+  }
+]
+sv-user-details> db.user_auth.find("userId" : "afe52690-7a26-4b95-9a3c-ef9467041b53")
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:27)
+
+> 1 | db.user_auth.find("userId" : "afe52690-7a26-4b95-9a3c-ef9467041b53")
+    |                            ^
+  2 |
+
+sv-user-details> db.user_auth.find("userId":"afe52690-7a26-4b95-9a3c-ef9467041b53")
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:26)
+
+> 1 | db.user_auth.find("userId":"afe52690-7a26-4b95-9a3c-ef9467041b53")
+    |                           ^
+  2 |
+
+sv-user-details> db.user_auth.find()
+[
+  {
+    _id: 'e7a6e69f-f0fe-485b-8f73-28f6a550b200',
+    userId: 'd5c0a0c2-3ac0-4f42-bf4d-e554281a738a',
+    password: '9M8kMKfqyVsqN4LkrmdWr1fTI0C5oDMA0bkyx0cwg2aferKcNZTvrayeJKL1rA6Y5j+GWKjN7755Y4fLT05Bww==',
+    changePassword: true,
+    locked: false,
+    createdById: 'd5c0a0c2-3ac0-4f42-bf4d-e554281a738a',
+    createdDate: ISODate("2022-08-17T12:02:56.832Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserAuth'
+  },
+  {
+    _id: '38f5556e-971c-40d7-8007-55be9e81fe9c',
+    userId: '2846590a-1db2-4936-aa35-d787f1720f4c',
+    password: 'BuPst0SMG5jl95M08MGRNUT7LAzK4BRJarooVhXn+uZGCmZeec3w/MDYD7LdkBskGtihN0HceS0/NpQEdQuE/g==',
+    changePassword: false,
+    secretQuestion: false,
+    locked: false,
+    createdById: 'd5c0a0c2-3ac0-4f42-bf4d-e554281a738a',
+    createdDate: ISODate("2023-09-03T00:00:00.804Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserAuth'
+  },
+  {
+    _id: 'e92acd4e-2e78-4838-a1ad-9dc7e9aa7a83',
+    userId: 'aa66624e-dffb-4972-897d-adc3a5923996',
+    password: 'BuPst0SMG5jl95M08MGRNUT7LAzK4BRJarooVhXn+uZGCmZeec3w/MDYD7LdkBskGtihN0HceS0/NpQEdQuE/g==',
+    changePassword: false,
+    secretQuestion: false,
+    locked: false,
+    createdById: 'd5c0a0c2-3ac0-4f42-bf4d-e554281a738a',
+    createdDate: ISODate("2023-09-03T00:00:00.804Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserAuth'
+  },
+  {
+    _id: 'bd60de75-dd70-4bbd-8faa-634c1742fbf5',
+    userId: 'b8447af9-39c4-4736-915a-4d891f4d8d2e',
+    password: '+QXJpAZ3CAmphZEeGCJF681B6VHvZKOi6XSPvXz9ocgjZiq5He0viNhPCnfriANh/Z8kbA27fJAlfYPcML90OQ==',
+    changePassword: true,
+    locked: false,
+    createdById: 'd5c0a0c2-3ac0-4f42-bf4d-e554281a738a',
+    createdDate: ISODate("2023-09-03T00:00:00.804Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserAuth'
+  },
+  {
+    _id: 'd62e1bf1-b581-43a8-9fd2-74f584222f13',
+    userId: '5a7c5151-d031-4056-9894-00f4628afb52',
+    password: '/knrGjRgWIzd9IvStpM5kblcpcGLlQ//ZgZLGom0sPluOoe24QIl7g7yo19D0UCss6YenU9MfBxN5Tj8+Ruffw==',
+    changePassword: false,
+    secretQuestion: false,
+    locked: false,
+    createdById: 'd5c0a0c2-3ac0-4f42-bf4d-e554281a738a',
+    createdDate: ISODate("2023-09-03T00:00:00.804Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserAuth'
+  },
+  {
+    _id: 'f1d62cd5-5b62-4c4d-9895-aa70ae9abaa3',
+    userId: 'f004b465-5521-4d59-a955-37f64629004c',
+    password: 'xt3WcgdaENlXDlJfeDYDnbXPGJp4Ac0einFIBHuLmkchoq0k4dlfXBxm9T/ZTEgf3OoNeDNALiqQh2RBKihuow==',
+    changePassword: false,
+    secretQuestion: false,
+    locked: false,
+    createdById: 'd5c0a0c2-3ac0-4f42-bf4d-e554281a738a',
+    createdDate: ISODate("2023-09-03T00:00:00.804Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserAuth'
+  },
+  {
+    _id: '10786962-6e85-4a04-8852-db60414020cc',
+    userId: '99a02b96-fdfa-416d-a196-92d00d238bde',
+    password: 'Nt6Uf06fweJHYJaQmgJv+2h3I09MCZjooofWEafKRGiKWLwlhE1RuXvjTcNQJPwc0KuJ3NQzsHST4SNYRMGtGg==',
+    changePassword: true,
+    secretQuestion: false,
+    locked: false,
+    createdById: 'd5c0a0c2-3ac0-4f42-bf4d-e554281a738a',
+    createdDate: ISODate("2023-09-03T00:00:00.804Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserAuth'
+  },
+  {
+    _id: '5ef0bfe7-d0fc-4712-b302-2afbd71691e8',
+    userId: '066a32e8-b16f-4f0b-812b-fa68f74d40e9',
+    password: 'bZySS97+JovKuob8koX5LN3p0sIFcSQwfF7wGiRcb25lCxbwCIEcgdooaZ0Coao3FqudDEyrHt478Uox7JmULg==',
+    changePassword: true,
+    secretQuestion: false,
+    locked: false,
+    createdById: 'd5c0a0c2-3ac0-4f42-bf4d-e554281a738a',
+    createdDate: ISODate("2023-09-03T00:00:00.804Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserAuth'
+  },
+  {
+    _id: 'f2041238-1d9b-463d-a366-3524d2472b64',
+    userId: 'ce2b7548-14b5-4066-8016-632772459f18',
+    password: '7sU6ErprKfZCOj1PVTLk8UWbSma/yNxzSZDzk5WtEGY7c82hV2vVQ/UQH3NdriCdmdWZyzQ6nCvV1BuqbAvB+w==',
+    changePassword: true,
+    secretQuestion: false,
+    locked: false,
+    createdById: 'd5c0a0c2-3ac0-4f42-bf4d-e554281a738a',
+    createdDate: ISODate("2023-09-03T00:00:00.804Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserAuth'
+  },
+  {
+    _id: '551b2bb4-0243-441f-8098-163ecbfea6d9',
+    userId: 'e0635bed-ba4c-47c4-ac4c-e9385af9c4b7',
+    password: 'EX35R14IaXRqCZE53nJ24ifxk2YR3JBN3tcRG612HtaTdF/YOTOunKeIfsh8ZVoJkcHpI+R1mVqee8p3HDb3Gw==',
+    changePassword: false,
+    secretQuestion: false,
+    locked: false,
+    createdById: 'd5c0a0c2-3ac0-4f42-bf4d-e554281a738a',
+    createdDate: ISODate("2023-09-03T00:00:00.804Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserAuth'
+  },
+  {
+    _id: 'ffd4dbb7-75a9-434d-8974-6412f3a944b3',
+    userId: 'f91f5e4e-1805-44d3-8495-62a2512c6801',
+    password: '/LcRyoUBz2hDb6tY9WuUoTVdDzgXzSm8taGwgEM1DbxA6bYkempyYbIKszn59eZy9+kJzdSSQ92n13NMPhjJFg==',
+    changePassword: true,
+    secretQuestion: false,
+    locked: false,
+    createdById: 'd5c0a0c2-3ac0-4f42-bf4d-e554281a738a',
+    createdDate: ISODate("2023-09-03T00:00:00.804Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserAuth'
+  },
+  {
+    _id: 'ac7a482f-602b-4447-ac2a-d8557f53f5ec',
+    userId: 'bda2d57a-631a-45e3-a451-cde1401fe5ca',
+    password: 'T4aSI6DZ5jDvVI+4gDeUEor8G5AavB3myjAK/TXrBCPnSnL6xxt50RFmmAywL7RYnT7Iwk5UmKYnIzM9zVn1Uw==',
+    changePassword: false,
+    secretQuestion: false,
+    locked: false,
+    createdById: 'd5c0a0c2-3ac0-4f42-bf4d-e554281a738a',
+    createdDate: ISODate("2023-09-03T00:00:00.804Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserAuth'
+  },
+  {
+    _id: '9226eb8e-244b-4f3d-b589-937528d64057',
+    userId: 'a320c06c-f516-43f3-ae3a-38e29a93493e',
+    password: 'GO7ovtDcuEBpMyzNPGdn4c7ur3MluHpNpYKB5dNBQE4NuRldowTGjrr7UCdlRna8yKPm1LEX0ZGrstYYKFyBQA==',
+    changePassword: true,
+    secretQuestion: false,
+    locked: false,
+    createdById: 'd5c0a0c2-3ac0-4f42-bf4d-e554281a738a',
+    createdDate: ISODate("2023-09-03T00:00:00.804Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserAuth'
+  },
+  {
+    _id: 'b1d08fac-079c-4e3e-96a6-a807d3379cd9',
+    userId: '87a4bb9e-faa2-4f6f-9762-9f87f4b13640',
+    password: '4q/Abktjl0GmG4vMclvhCf1rAsdHBYmCk1/gEIciyIP5NaqAqhKadi+/v0GCVphj6P2gi0+45pjnsuan6pgPCQ==',
+    changePassword: true,
+    secretQuestion: false,
+    locked: false,
+    createdById: 'd5c0a0c2-3ac0-4f42-bf4d-e554281a738a',
+    createdDate: ISODate("2023-09-03T00:00:00.804Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserAuth'
+  },
+  {
+    _id: '5be942b0-81dc-4dc7-9285-6afabc880c7b',
+    userId: '09a610d4-6dea-445d-a9d2-f62c49064cef',
+    password: 'i5Ne3S3fesvgVSECM0If8BfHY4UtTKPwCeObZFv+9UC35aFlnagGQ6Jcg/wTCwLtI1rRW/5zmHGRxbEZDngYpw==',
+    changePassword: true,
+    secretQuestion: false,
+    locked: false,
+    createdById: 'd5c0a0c2-3ac0-4f42-bf4d-e554281a738a',
+    createdDate: ISODate("2023-09-03T00:00:00.804Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserAuth'
+  },
+  {
+    _id: '2bfb7ac1-9d5f-44f8-a4e4-b45cc218116a',
+    userId: 'a4a9df79-b332-4675-8611-cc9bff8899f3',
+    password: 'nqHnRrMDhz4A/fN8pvfRtmFG1adOPP3I5vkQmaKvN6ymzIUMAZS5fCLgK5jRPfwU4qeplgfq9YIyWnSqrwLgNg==',
+    changePassword: false,
+    secretQuestion: false,
+    locked: false,
+    createdById: 'd5c0a0c2-3ac0-4f42-bf4d-e554281a738a',
+    createdDate: ISODate("2023-09-03T00:00:00.804Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserAuth'
+  },
+  {
+    _id: '2c05cb0a-b0b9-4509-96cc-65bd2f2ef354',
+    userId: 'f4fa4519-1f8d-4a68-b8f1-dc195a606839',
+    password: 'RJ+nFic8axbAhlgdowicGskpcl7fzXbH/5iS3mk4Qd452UHIviXtHSvM1Xxgz1JRYb/Qz+tiS4OaIDfkHEU69A==',
+    changePassword: false,
+    secretQuestion: false,
+    locked: false,
+    createdById: 'd5c0a0c2-3ac0-4f42-bf4d-e554281a738a',
+    createdDate: ISODate("2023-09-03T00:00:00.804Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserAuth'
+  },
+  {
+    _id: '33b89870-a374-491f-bb6c-57ed061895f8',
+    userId: '14c8f66d-3fed-4854-a383-dd6452b70c3e',
+    password: 'JajMd2frtWxx6k8o5E/lPeA9N2B85FoM4tCsdBFasyv2ulAyN97iGQ3Dl9CkMv5kuBSBq9kFzkHBhqgFe2Ia1A==',
+    changePassword: false,
+    secretQuestion: false,
+    locked: false,
+    createdById: 'd5c0a0c2-3ac0-4f42-bf4d-e554281a738a',
+    createdDate: ISODate("2023-09-03T00:00:00.804Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserAuth'
+  },
+  {
+    _id: '4246cfea-8b7e-441c-8e54-bc5b167278ff',
+    userId: 'ca22cafe-4719-4b4f-99b2-973811449a9d',
+    password: 'HdfTBUe0R6ZsW1NcbJZ/RIORy6ZdFHzem8Txyw7bbgn9ZR5u26tv0LkcHqptPsZPJ5d+YaIM0Kw749TDXuypRw==',
+    changePassword: true,
+    secretQuestion: false,
+    locked: false,
+    createdById: 'd5c0a0c2-3ac0-4f42-bf4d-e554281a738a',
+    createdDate: ISODate("2023-09-03T00:00:00.804Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserAuth'
+  },
+  {
+    _id: 'ab7f1505-ae13-40b9-a913-5d1ff8c37c86',
+    userId: 'a6703fc1-56cd-4d39-a5c3-c7ebe111170f',
+    password: 'l1Z2bx8ZioF9+FbcPX3a4PZuv9rPYu5wpM0My/SfJ568WkCDakbcpmq4b9jeVuD+QUPikMh/WkEtueZB4Rc/xQ==',
+    changePassword: false,
+    secretQuestion: false,
+    locked: false,
+    createdById: 'd5c0a0c2-3ac0-4f42-bf4d-e554281a738a',
+    createdDate: ISODate("2023-09-03T00:00:00.804Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserAuth'
+  }
+]
+Type "it" for more
+sv-user-details> db.user_auth.find({"userId" : "afe52690-7a26-4b95-9a3c-ef9467041b53"})
+[
+  {
+    _id: 'cae84719-9024-4a96-8b09-2d5f9377bd63',
+    userId: 'afe52690-7a26-4b95-9a3c-ef9467041b53',
+    password: '9dSEtwlcr5Fq0om2fwHwcj7nVykFju5M/HluGyvtwsh6lyfMH8uyNp1psg5MYuViFfsXaa0VEJP4fp4T0ygITA==',
+    changePassword: false,
+    secretQuestion: false,
+    locked: false,
+    createdById: 'afe52690-7a26-4b95-9a3c-ef9467041b53',
+    createdDate: ISODate("2023-11-24T06:52:21.925Z"),
+    active: true,
+    version: 1,
+    _class: 'com.sv.user.entity.UserAuth'
+  }
+]
+sv-user-details> db.user_password_history.find({"userId" : "afe52690-7a26-4b95-9a3c-ef9467041b53"})
+[
+  {
+    _id: '96a4da52-18e4-43ec-aea4-97337cc13e9a',
+    userId: 'afe52690-7a26-4b95-9a3c-ef9467041b53',
+    password: 'DubpTfOiF/VupPKY2UWyJLV5Z0hM62M0JlR7n4wHlIG/qA23U0hn2ixuixpzRSzI/k1W3Dwfg36lyCUkzz+d5w==',
+    createDate: ISODate("2023-11-24T06:52:21.922Z"),
+    _class: 'com.sv.user.entity.UserPasswordHistory'
+  },
+  {
+    _id: 'ffcc376f-bd91-4900-843c-19ea3d40a461',
+    userId: 'afe52690-7a26-4b95-9a3c-ef9467041b53',
+    password: 'oPmFa5VwRg6e9i2i0s79uwkHs8Y9BTseGK4cs9OHsynS3bDqcca1Nayzyktb+51+Jm+3fKqQhpOXpz756PQ5eA==',
+    createDate: ISODate("2023-11-24T06:52:28.249Z"),
+    _class: 'com.sv.user.entity.UserPasswordHistory'
+  },
+  {
+    _id: '04da7552-c53e-45ce-bb22-e1eba5f102c6',
+    userId: 'afe52690-7a26-4b95-9a3c-ef9467041b53',
+    password: '9dSEtwlcr5Fq0om2fwHwcj7nVykFju5M/HluGyvtwsh6lyfMH8uyNp1psg5MYuViFfsXaa0VEJP4fp4T0ygITA==',
+    createDate: ISODate("2023-11-24T07:00:59.411Z"),
+    _class: 'com.sv.user.entity.UserPasswordHistory'
+  },
+  {
+    _id: 'c241889a-a6e1-4002-8ab9-76ac3337db5e',
+    userId: 'afe52690-7a26-4b95-9a3c-ef9467041b53',
+    password: '0llyEB1/Ly3SxM5qTZ6JMXCJdYOh8R2diV3kCduMloRvygvi/4MNKnqEuNJQYXvt0CHkbOzT7oY2njN+GzhOQw==',
+    createDate: ISODate("2023-11-24T07:15:19.038Z"),
+    _class: 'com.sv.user.entity.UserPasswordHistory'
+  },
+  {
+    _id: '0b3bb95b-0d32-4fae-8950-3b4af3d15315',
+    userId: 'afe52690-7a26-4b95-9a3c-ef9467041b53',
+    password: '9dSEtwlcr5Fq0om2fwHwcj7nVykFju5M/HluGyvtwsh6lyfMH8uyNp1psg5MYuViFfsXaa0VEJP4fp4T0ygITA==',
+    createDate: ISODate("2023-11-24T07:17:12.191Z"),
+    _class: 'com.sv.user.entity.UserPasswordHistory'
+  }
+]
+sv-user-details>
+securview@localhost:~> exit
+logout
+Connection to 10.20.202.212 closed.
+PS C:\Users\aahuja>

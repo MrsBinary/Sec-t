@@ -1,0 +1,261 @@
+String url = "http://localhost:7078/itsm/api/v1/customer/{custId}/assets/{assetId}".replace("{custId}", custId).replace("{assetId}", assetId); 
+		
+		org.springframework.http.HttpHeaders headers = new org.springframework.http.HttpHeaders();
+		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		headers.add(org.springframework.http.HttpHeaders.AUTHORIZATION, authorizationHeader);
+		HttpEntity httpEntity = new HttpEntity(headers);
+		
+	    ResponseEntity<ResponseBean> response = restTemplate.exchange(url, HttpMethod.GET, httpEntity, ResponseBean.class);
+	    if (response.getStatusCode() == HttpStatus.OK) {
+	    	Object responseBody = response.getBody().getData();
+	    	
+	    	log.info("response generated - "+responseBody);
+	    	AssetUsageDetails asset = mapper.convertValue(responseBody, AssetUsageDetails.class);
+//	        System.out.println("Data from the other service: " + responseBody);
+	        return asset;
+	    } else {
+	        throw new DataNotFoundException("Cant find data");
+	    }
+
+
+
+http://10.20.202.211/itsm/api/v1/incident/
+
+
+payload-
+
+	{"summary":"demo","customerId":"fa5a76b2-e78d-4940-a59b-f8ab584120fb","affectedEndUserId":"3f3e6029-4831-42fc-8557-6628fda24895","incidentAreaId":"1","statusId":"1","severityId":"1","assignedToId":"854d5891-c540-49e5-a91d-f0704c665179","attachments":[],"partnerGroups":[],"customerGroups":[],"notifyPartnerUsers":[],"notifyCustomerUsers":[],"externalReferenceId":null,"keyword":null,"customerAssets":["af5ae530-0c8f-450b-aa29-0623c47d7f35","e87f8643-cb14-4273-8731-7aa7e2c13394","6aaa6842-a131-46a3-87d9-d8626f25ab63","ff2b4b2a-a891-418b-a9b5-34f5fb05f330","86a95ade-72c7-4988-885f-dc7f6403b128"],"logSourceTypeId":null,"alarmDetails":"Demo12","eventDateTime":"2023-10-30T09:21:01.983Z","analysis":"Demo","recommendation":"DEO","internalComment":null,"comment":null,"causedChangeOrder":null,"inducedChangeOrder":null,"emailNotifications":[],"emailNotiDump":null,"networkTraffic":[]}
+Token-
+
+	eyJhbGciOiJIUzUxMiJ9.eyJsZXZlbCI6IjAiLCJzdWIiOiJ7XCJpZFwiOlwiMGUzYWQzMDctYTI2ZS00YmM5LTlkYmQtZTAzZDNiZTg4MmFiXCIsXCJ1SWRcIjpcIjc0YzRhNjZjLTZiNzYtNDVlMy1hMjUxLWMxMWM5MjE3NTY4ZVwiLFwidUxldmVsXCI6XCIwXCIsXCJuYW1lXCI6XCJLaXJhbiBQYXRpbFwiLFwidG9rZW5JZFwiOm51bGx9IiwiaWF0IjoxNjk4NjU3NDczLCJleHAiOjE2OTg3MDA2NzN9.j-D2bffZzvuQTw6DlPs3GuTg6NYyHCL44VEEjThAVI7-0AaeVfKp6eiSnTp7EDDXjpZbkTn79bhTE-ijzjB1dQ
+
+
+
+
+
+
+
+
+String url = "http://localhost:7078/itsm/api/v1/customer/{custId}/assets/{assetId}"
+//							 .replace("{custId}", customerId).replace("{assetId}", assetIds.get(i));
+//				log.info("CustomerID - "+customerId);
+//				log.info("AssetIDID - "+assetIds.get(i));
+
+
+org.springframework.http.HttpHeaders headers = new org.springframework.http.HttpHeaders();
+		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		headers.add(org.springframework.http.HttpHeaders.AUTHORIZATION, authorizationHeader);
+		HttpEntity httpEntity = new HttpEntity(headers);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+  "_id": "5d34d71e-c40f-439d-b713-ce26bc1ca3f7",
+  "referenceId": "7470b76f-347b-441a-ba04-e66cdf204450",
+  "tenant": {
+    "partnerId": "3b2834b7-ac09-49d3-a301-37bfd7364655",
+    "partnerName": "FirstPartner",
+    "customerId": "660e2490-911f-45b9-a248-2a1605f13fc8",
+    "customerName": "FirstCustomer"
+  },
+  "eventInfo": {
+    "id": "0_4282",
+    "type": "itvsm_incident_event"
+  },
+  "tokenId": "eyJhbGciOiJIUzUxMiJ9.eyJsZXZlbCI6IjAiLCJzdWIiOiJ7XCJpZFwiOlwiZTEyYWMzNzctZWIzZS00ZWJmLWI5ZjItNDgxNzdkNGI1Mzc4XCIsXCJ1SWRcIjpcImU2MDU1ZjQ5LThkNzgtNDA1MS05NzA1LTc5MThlOGY3NTI4MFwiLFwidUxldmVsXCI6XCIwXCIsXCJuYW1lXCI6XCJIZW1hbnQgSFwiLFwidG9rZW5JZFwiOm51bGx9IiwiaWF0IjoxNjg2MDI3MDQzLCJleHAiOjE4NDM4MTE2NzN9.M4nhwi7f6XMAdB1U7zrOUpnAkzR-CP_WJ0CsZ8-2vI1IfWEDyKYtZPHUhbd9lvrN_CdvwoCwQUwc08LjQH_BPg",
+  "data": {
+    "id": "7470b76f-347b-441a-ba04-e66cdf204450",
+    "ticketNo": "INC-267",
+    "summary": "TEST AC Logs Up",
+    "customerId": "660e2490-911f-45b9-a248-2a1605f13fc8",
+    "affectedEndUserId": "d7c8fa26-cc6e-4af1-834a-da25a6278049",
+    "incidentAreaId": "b80b80a2-58df-430f-8408-267668bf187c",
+    "statusId": "2",
+    "severityId": "3",
+    "assignedToId": "503ca299-3dfd-44b1-983a-41dc8192befb",
+    "partnerGroups": [],
+    "customerGroups": [],
+    "notifyPartnerUsers": [],
+    "notifyCustomerUsers": [],
+    "externalReferenceId": "",
+    "keyword": "KLKKKK",
+    "customerAssets": [
+      "86406897-85fe-4d04-b899-7f8a6e6103d6",
+      "e135f311-6580-4bd5-a0ec-e0ed5b79f0cd",
+      "H11111"
+    ],
+    "eventDateTime": {
+      "$numberLong": "1686029185441"
+    },
+    "alarmDetails": "Alarm Details",
+    "analysis": "SDERTT Updated",
+    "activityLog": [
+      {
+        "comment": "New Incident Ticket Created",
+        "userId": "e6055f49-8d78-4051-9705-7918e8f75280",
+        "userName": "Hemant H",
+        "dateTime": {
+          "$numberLong": "1686029238442"
+        },
+        "internal": false
+      },
+      {
+        "comment": " Customer Assets added <b>[SDDD]</b></br>",
+        "userId": "e6055f49-8d78-4051-9705-7918e8f75280",
+        "userName": "Hemant H",
+        "dateTime": {
+          "$numberLong": "1686029300342"
+        },
+        "internal": false
+      },
+      {
+        "comment": "External Comments Added: ADDED EXTERNAL",
+        "userId": "e6055f49-8d78-4051-9705-7918e8f75280",
+        "userName": "Hemant H",
+        "dateTime": {
+          "$numberLong": "1686029300342"
+        },
+        "internal": false
+      },
+      {
+        "comment": "Incident Updated: <ul><li>Summary Changed From <b>TEST AC Logs</b> To <b>TEST AC Logs Up</b></li><li>Status Changed From <b>Open</b> To <b>Assigned SOC</b></li><li>Severity Changed From <b>Major</b> To <b>Minor</b></li><li>Affected End Users Changed From <b>Krishna Hegade</b> To <b>Rudra H</b></li><li>Assigned To Changed From <b>NEW NN</b> To <b>Reshma Hegade</b></li><li>ExternalReference Changed From  <b>123456 </b> To  <b> - </b> </li><li>Keyword added  <b>KLKKKK</b></li><li>Analysis Changed From  <b>SDERTT </b> To  <b>SDERTT Updated </b> </li><li>IncidentArea Changed From  <b>Application.NAM.Tomcat </b> To  <b>AAA.AAFailed </b> </li></ul>",
+        "userId": "e6055f49-8d78-4051-9705-7918e8f75280",
+        "userName": "Hemant H",
+        "dateTime": {
+          "$numberLong": "1686029300532"
+        },
+        "internal": false
+      },
+      {
+        "comment": "External Comments Added: <b>Internal Comment Added</b>",
+        "userId": "e6055f49-8d78-4051-9705-7918e8f75280",
+        "userName": "Hemant H",
+        "dateTime": {
+          "$numberLong": "1686029665162"
+        },
+        "internal": false
+      },
+      {
+        "comment": "Incident Updated: <ul><li>NetworkTrafficFlow Changed</li></ul>",
+        "userId": "e6055f49-8d78-4051-9705-7918e8f75280",
+        "userName": "Hemant H",
+        "dateTime": {
+          "$numberLong": "1686737220350"
+        },
+        "internal": false
+      }
+    ],
+    "internalComment": false,
+    "networkTraffic": [
+      {
+        "sourceIP": "11.1.1.1.111",
+        "targetIP": "11",
+        "targetPort": "11",
+        "action": "44",
+        "count": "44444",
+        "hashValue": "444",
+        "sourceUser": "11",
+        "targetUser": "123",
+        "eventId": "444"
+      },
+      {
+        "sourceIP": "2.2.2.2.2.2",
+        "targetIP": "22222",
+        "targetPort": "22222",
+        "action": "2222",
+        "count": "2222",
+        "hashValue": "2222",
+        "sourceUser": "22222",
+        "targetUser": "2222",
+        "eventId": "222"
+      }
+    ],
+    "attachments": [],
+    "autoTicket": false,
+    "versionId": 5,
+    "valid": true,
+    "customer": "FirstCustomer",
+    "partnerId": "3b2834b7-ac09-49d3-a301-37bfd7364655",
+    "partner": "FirstPartner",
+    "severity": "Minor",
+    "status": "Assigned SOC",
+    "affectedEndUser": "Rudra H",
+    "assignedToUser": "Reshma Hegade",
+    "incidentArea": "AAA.AAFailed",
+    "assetNames": [
+      "CHANGE",
+      "SDDD",
+      "HEMANT"
+    ],
+    "logSource": [
+      "Mgmt",
+      "Authentication Server"
+    ]
+  }
+}
+
+
+
+
+
+
+
+
+Check password expiry method ::
+
+public Boolean checkPasswordExpiry(String user_id) throws DataNotFoundException {
+//		String user_id = tokenInfo.getUserId();
+		
+		UserPasswordHistory entity = userPasswordHistoryRepo.findFirstByUserIdOrderByCreateDateDesc(user_id);
+		
+		if (entity!=null) {
+			Date old  = entity.getCreateDate();
+//			DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");  
+//			String strDate = dateFormat.format(entity.getCreateDate());
+//			 LocalDate oldLocalDate = LocalDate.parse(strDate);
+			 LocalDate oldLocalDate =old.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+			 LocalDate todayLocalDate = LocalDate.now();
+			 long days = ChronoUnit.DAYS.between(oldLocalDate, todayLocalDate);
+//			 Period period = Period.between(oldLocalDate, todayLocalDate);
+//			 long days = Math.abs(period.getDays());
+			 
+			 if(days>=30) {
+				 return true;
+			 }
+			 else {
+				 return false;
+			 }
+		}
+		else {
+			throw new DataNotFoundException("User password histroy details not found !");
+		}
+		
+	}

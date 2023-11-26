@@ -1,0 +1,14 @@
+C:\\Users\\aahuja\\Desktop\\gerrit\\sv-master-data-service\\dbscript\\1-create-collections.js
+
+load("C:\\Users\\aahuja\\Desktop\\gerrit\\sv-master-data-service\\dbscript\\1-create-collections.js");
+load("C:\\Users\\aahuja\\Desktop\\gerrit\\sv-master-data-service\\dbscript\\application_name_m.js");
+load("C:\\Users\\aahuja\\Desktop\\gerrit\\sv-master-data-service\\dbscript\\asset_type.js");
+load("C:\\Users\\aahuja\\Desktop\\gerrit\\sv-master-data-service\\dbscript\\country_location.js");
+load("C:\\Users\\aahuja\\Desktop\\gerrit\\sv-master-data-service\\dbscript\\country.js");
+load("C:\\Users\\aahuja\\Desktop\\gerrit\\sv-master-data-service\\dbscript\\criticality_m.js");
+load("C:\\Users\\aahuja\\Desktop\\gerrit\\sv-master-data-service\\dbscript\\industry_vertical.js");
+load("C:\\Users\\aahuja\\Desktop\\gerrit\\sv-master-data-service\\dbscript\\partner_type_m.js");
+load("C:\\Users\\aahuja\\Desktop\\gerrit\\sv-master-data-service\\dbscript\\questions_m.js");
+load("C:\\Users\\aahuja\\Desktop\\gerrit\\sv-master-data-service\\dbscript\\severity_m.js");
+load("C:\\Users\\aahuja\\Desktop\\gerrit\\sv-master-data-service\\dbscript\\status_m.js");
+load("C:\\Users\\aahuja\\Desktop\\gerrit\\sv-master-data-service\\dbscript\\time_zone.js");

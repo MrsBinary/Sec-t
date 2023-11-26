@@ -1,0 +1,225 @@
+load("C:\\absolute\\path\\to\\your\\script.js")
+
+C:\\Users\\AAhuja\\Desktop\\sv-master-data-service\\sv-master-data-service\\dbscript\\country_location.js
+
+load("C:\\Users\\AAhuja\\Desktop\\sv-master-data-service\\sv-master-data-service\\dbscript\\time_zone.js");
+
+
+C:\Users\AAhuja\Desktop\sv-master-data-service\sv-master-data-service\dbscript\1-create-collections.js
+C:\Users\AAhuja\Desktop\sv-master-data-service\sv-master-data-service\dbscript\application_name_m.js
+C:\Users\AAhuja\Desktop\sv-master-data-service\sv-master-data-service\dbscript\asset_type.js
+C:\Users\AAhuja\Desktop\sv-master-data-service\sv-master-data-service\dbscript\country_location.js
+C:\Users\AAhuja\Desktop\sv-master-data-service\sv-master-data-service\dbscript\country.js
+C:\Users\AAhuja\Desktop\sv-master-data-service\sv-master-data-service\dbscript\criticality_m.js
+C:\Users\AAhuja\Desktop\sv-master-data-service\sv-master-data-service\dbscript\industry_vertical.js
+C:\Users\AAhuja\Desktop\sv-master-data-service\sv-master-data-service\dbscript\partner_type_m.js
+C:\Users\AAhuja\Desktop\sv-master-data-service\sv-master-data-service\dbscript\questions_m.js
+C:\Users\AAhuja\Desktop\sv-master-data-service\sv-master-data-service\dbscript\severity_m.js
+C:\Users\AAhuja\Desktop\sv-master-data-service\sv-master-data-service\dbscript\status_m.js
+C:\Users\AAhuja\Desktop\sv-master-data-service\sv-master-data-service\dbscript\time_zone.js
+
+
+
+
+
+Authorization :: Authorization
+
+cpcIjc0YzRhNjZjLTZiNzYtNDVlMy1hMjUxLWMxMWM5MjE3NTY4ZVwiLFwidUxldmVsXCI6XCIwXCIsXCJuYW1lXCI6XCJLaXJhbiBQYXRpbFwiLFwidG9rZW5JZFwiOm51bGx9IiwiaWF0IjoxNjk3MDEyNTk2LCJleHAiOjE2OTcwNTU3OTZ9.BOehT6B1HRksXUqKQRsVWPOKOrJiwkMmjhxN6vIK9DgRvTw_tFFlaUUJ_i9VtaAKKmlA6DQvkXwsP-Rig1-FzQ
+
+http://localhost:7074/md/api/v1
+
+cmd query to server :: sc query MongoDB
+
+start mongo server :: net start MongoDB
+
+,"nextPossibleStatusForPartner":[0]
+
+
+Content-Type ::
+
+application/json; charset=UTF-8
+
+
+Token :: 
+
+eyJhbGciOiJIUzUxMiJ9.eyJsZXZlbCI6IjAiLCJzdWIiOiJ7XCJpZFwiOlwiYTAyNTQ1MGEtMWQxMy00NTIwLWJlZjgtNzlmMGM0Yjg0NDg4XCIsXCJ1SWRcIjpcIjc0YzRhNjZjLTZiNzYtNDVlMy1hMjUxLWMxMWM5MjE3NTY4ZVwiLFwidUxldmVsXCI6XCIwXCIsXCJuYW1lXCI6XCJLaXJhbiBQYXRpbFwiLFwidG9rZW5JZFwiOm51bGx9IiwiaWF0IjoxNjk3NjIyMDA0LCJleHAiOjE2OTc2NjUyMDR9.xmkZ6Vd1Ih6SI0KEBv-5_WRgpuJ2Zz-M3pz9S2DpoBVAtuLFImn26wS2_a3c0SC2JB_p2ktTRTSoEIXyY_vFLw
+
+
+
+
+
+
+
+Mapping methods written by me :::
+
+
+	@PostMapping("/industryverticals/")
+	public ResponseEntity<ResponseBean<IndustryVerticals>> createIndustryVertical(@RequestBody IndustryVerticals industryvertical) throws PersistenceException, InvalidDataException, DuplicateRecordException {
+		return ResponseEntity.ok(new ResponseBean<IndustryVerticals>("Industry verticals " + RECORD_SAVED, imdSvc.createIndustryVertical(industryvertical)));
+	}
+
+
+
+	@DeleteMapping("/industryverticals/{id}")
+	public ResponseEntity<ResponseBean<IndustryVerticals>> deleteIndustryVertical(@PathVariable("id") String id) throws InvalidDataException{
+		return ResponseEntity.ok(new ResponseBean<IndustryVerticals>("Deleted the industry requested !", imdSvc.deleteIndustryVertical(id)));
+	}
+
+
+	@PutMapping("/industryverticals/{id}")
+	public ResponseEntity<ResponseBean<IndustryVerticals>> updateIndustryVertical(@PathVariable("id") String id,@RequestBody IndustryVerticals industryVerticals) throws InvalidDataException{
+		return ResponseEntity.ok(new ResponseBean<IndustryVerticals>("Deleted the industry requested !", imdSvc.updateIndustryVertical(id,industryVerticals)));
+	}
+
+
+
+sv-ingestion::
+
+load("C:\\Users\\AAhuja\\git\\sv-data-ingestion-service\\dbscript\\1-create-collections.js");
+
+load("C:\\Users\\AAhuja\\git\\sv-data-ingestion-service\\dbscript\\chart_definition.js");
+
+load("C:\\Users\\AAhuja\\git\\sv-data-ingestion-service\\dbscript\\data_point_definition.js");
+
+load("C:\\Users\\AAhuja\\git\\sv-data-ingestion-service\\dbscript\\data_view_definition.js");
+
+load("C:\\Users\\AAhuja\\git\\sv-data-ingestion-service\\dbscript\\query_definition.js");
+
+load("C:\\Users\\AAhuja\\git\\sv-data-ingestion-service\\dbscript\\view_definition.js");
+
+
+
+sv-itsm::
+
+load("C:\\Users\\AAhuja\\git\\sv-itsm-service\\dbscript\\asset_type.js");
+
+load("C:\\Users\\AAhuja\\git\\sv-itsm-service\\dbscript\\category.js");
+
+load("C:\\Users\\AAhuja\\git\\sv-itsm-service\\dbscript\\incident_area.js");
+
+load("C:\\Users\\AAhuja\\git\\sv-itsm-service\\dbscript\\incident_sequence.js");
+
+load("C:\\Users\\AAhuja\\git\\sv-itsm-service\\dbscript\\log_source_type_m.js");
+
+load("C:\\Users\\AAhuja\\git\\sv-itsm-service\\dbscript\\requester_area.js");
+
+load("C:\\Users\\AAhuja\\git\\sv-itsm-service\\dbscript\\vendor.js");
+
+
+sv-user::
+
+load("C:\\Users\\AAhuja\\git\\sv-user-service\\dbscript\\1-feature_details.js");
+
+
+load("C:\\Users\\AAhuja\\git\\sv-user-service\\dbscript\\2-role_details.js");
+
+load("C:\\Users\\AAhuja\\git\\sv-user-service\\dbscript\\3-user-details.js");
+
+
+
+
+Postman URLs ::
+
+
+sv-user-service:
+http://localhost:7072/user/api/v1/user/customers/
+
+sv-master ::
+http://localhost:7074/md/api/v1/criticality/
+
+sv-itsm-service ::
+http://localhost:7078/itsm/api/v1/requesterarea/
+
+sv-auth-service ::
+http://localhost:7081/utm-svc/api/v1/1
+
+sv-customer-service::
+http://localhost:7075/cust/api/v1/customer/
+
+sv-data-ingestion-service ::
+http://localhost:7056/di-svc/produce
+
+sv-document-service::
+http://localhost:8077/doc/api/v1/
+
+sv-integration-service::
+http://localhost:6078/sechubintsvc/api/v1/trigger/1
+
+sv-partner-service ::
+http://localhost:7073/ptr/api/v1/partner/
+
+sv-user-session-context-service ::
+http://localhost:7079/sc-svc/user/logout
+
+sv-email-service ::
+http://localhost:7098/email-svc/api/v1/
+
+
+
+Errors creating services :
+
+sv-partner-db : service -> sv-partner-service
+http://localhost:7073/ptr/api/v1/partner/
+
+sv-user-session-details ::
+http://localhost:7079/sc-svc/api/v1/user/logout -> Data not found.. But present in DB.
+
+
+logo URL : 
+C:\\Users\\AAhuja\\Desktop
+
+
+
+
+laptop URL :: 
+
+load("C:\\Users\\aahuja\\git\\sv-data-ingestion-service\\dbscript\\1-create-collections.js");
+load("C:\\Users\\aahuja\\git\\sv-data-ingestion-service\\dbscript\\chart_definition.js");
+load("C:\\Users\\aahuja\\git\\sv-data-ingestion-service\\dbscript\\data_point_definition.js");
+load("C:\\Users\\aahuja\\git\\sv-data-ingestion-service\\dbscript\\data_view_definition.js");
+load("C:\\Users\\aahuja\\git\\sv-data-ingestion-service\\dbscript\\query_definition.js");
+load("C:\\Users\\aahuja\\git\\sv-data-ingestion-service\\dbscript\\view_definition.js"); 
+
+
+
+
+
+
+sv-user-service :: 
+
+load("C:\\Users\\aahuja\\git\\sv-user-service\\dbscript\\1-feature_details.js");
+load("C:\\Users\\aahuja\\git\\sv-user-service\\dbscript\\2-role_details.js");
+load("C:\\Users\\aahuja\\git\\sv-user-service\\dbscript\\3-user-details.js");
+
+
+
+ {
+            "id": "54ba997f-d33a-4931-8e74-b0f4da44bcc0",
+            "customerId": "b6e8b32e-ba68-4061-9df4-ef9c61e4f208",
+            "deviceName": "Cisco",
+            "vendorId": "35",
+            "logSourceTypeId": "33",
+            "applicationNameId": "1",
+            "criticalityId": 7,
+            "assetTypeId": "1",
+            "role": "",
+            "countryId": "1269750",
+            "stateId": "1252770",
+            "openTicket": true,
+            "cityId": "1259229",
+            "assetId": "c058dc6d-5dc4-4ec4-92e9-88046cfbdc7a",
+            "ticketId": "a1f7d890-b8cf-4501-98ee-8616fb09882b",
+            "ticketNo": "INC-5266",
+            "partnerId": "4d55fff4-da20-42dd-afb0-95ae8bf0dc65",
+            "partnerName": "SteamDeck",
+            "customerName": "GM"
+        }
+
+
+Edit : 
+{"customer.name":"SONA COMSTAR"} --- useful
+
+{"userName":"Devlopment Support"}
+
+email : 
+{"hostName" : "aaaa@securview.com"}
